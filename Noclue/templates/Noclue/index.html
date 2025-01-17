@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'Noclue/styles.css' %}">
+{% endblock css_files %}
 
 {% block title %}
   V is gay 
@@ -24,12 +28,23 @@
       <div class="formDiv">
         <form action="/" method="POST">
           {% csrf_token %}
-            {{ form }}
-          
+
+          <div class = "userGroup">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors}}
+          </div>
+
           <button>submit</button>
         </div>
       </form>
     </section>
   </main>
+
+  <footer>
+    <p>
+      © 2025 [JDC.INC]. All Rights Reserved.
+    </p>
+  </footer>
 </body>
 {% endblock content %}
