@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'Noclue/styles.css' %}">
+{% endblock css_files %}
 
 {% block title %}
   V is gay 
@@ -7,23 +11,40 @@
 
 
 {% block content %}
+<body>
+  
   <header>
     <h1>Welcome to the website</h1>
   </header>
 
+<main>
   <section class="desc">  <!--Description of the website-->
     <p>Here you can find all the information you need to know about the website.</p>
   </section>
 
-  <section> <!--Section for the login-->
+  <section class="form"> <!--Section for the login-->
     <h2>Please log in here:</h2>
 
-    <form action="/" method="POST">
-      {% csrf_token %}
-      
-      {{ form }}
+      <div class="formDiv">
+        <form action="/" method="POST">
+          {% csrf_token %}
 
-      <button>submit</button>
-    </form>
-  </section>
+          <div class = "userGroup">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors}}
+          </div>
+
+          <button>submit</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      © 2025 [JDC.INC]. All Rights Reserved.
+    </p>
+  </footer>
+</body>
 {% endblock content %}
