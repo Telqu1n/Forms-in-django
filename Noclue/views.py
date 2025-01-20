@@ -1,6 +1,7 @@
 from django.shortcuts import render 
 from django.http import HttpResponseRedirect
 from .forms import LogInForm
+from .models import LogIn
 
 
 def index(request):
@@ -8,7 +9,10 @@ def index(request):
        form = LogInForm(request.POST)
        
        if form.is_valid():
-           print(form.cleaned_data)
+           user_data = LogIn(username=form.cleaned_data['username'], 
+                             password=form.cleaned_data['password'], 
+                             email=form.cleaned_data['email'])
+           user_data.save()
            return HttpResponseRedirect('/test')
    else:
        form = LogInForm()
