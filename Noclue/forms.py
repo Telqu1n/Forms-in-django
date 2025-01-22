@@ -19,3 +19,5 @@ class LogInForm(forms.ModelForm):
             'password': 'Password',
             'email': 'Email'
         }
+        
+        

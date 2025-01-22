@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'Noclue/styles.css' %}">
+{% endblock css_files %}
+
+{% block title %}
+  sign up
+{% endblock title %}
+
+{% block content %}
+<body>
+  <header>
+    <h1>Welcome to the website</h1>
+  </header>
+</body>
+
+<section class="form"> <!--Section for the login-->
+  <h2>Please Sign up here:</h2>
+
+    <div class="formDiv">
+      <form action="/" method="POST">
+        {% csrf_token %}
+
+        <div class = "userGroup">
+          {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}
+          {% endfor %}
+         
+        </div>
+
+        <button>submit</button>
