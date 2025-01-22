@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  User information 
+{% endblock title %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'Noclue/styles.css' %}">
+{% endblock css_files %}
+
+
+{% block content %}
+
+
+  {% if user_details %}
+    <h1>Name: {{ user_details.username }} </h1>
+    <p>Email: {{ user_details.email }} </p>
+  {% else %}
+    <h1> No user found </h1>
+  {% endif %}
+
+{% endblock content %}
